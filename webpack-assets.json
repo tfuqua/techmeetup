@@ -1,0 +1,9 @@
+{
+  "javascript": {
+    "main": "bundle.js"
+  },
+  "styles": {
+    "main": "main.css"
+  },
+  "assets": {}
+}

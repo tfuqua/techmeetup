@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Boilerplate</title>
+  <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+  <div id="app"><%- html %></div>
+  <script>
+    window.__INITIAL_STATE__ = <%- JSON.stringify(finalState) %>
+  </script>
+  <script async src="/bundle.js"></script>
+</body>
+</html>
