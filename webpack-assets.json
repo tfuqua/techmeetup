@@ -2,6 +2,8 @@
   "javascript": {
     "main": "bundle.js"
   },
-  "styles": {},
+  "styles": {
+    "main": "main.css"
+  },
   "assets": {}
 }

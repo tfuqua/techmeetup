@@ -15,11 +15,11 @@ import api from './routes';
 const port = 8000;
 const app = new Express();
 
-/*if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production') {
   const compiler = webpack(config);
   app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
   app.use(webpackHotMiddleware(compiler));
-}*/
+}
 
 app.use('/api', api);
 
