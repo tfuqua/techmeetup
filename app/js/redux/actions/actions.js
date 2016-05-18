@@ -2,17 +2,17 @@ import * as ActionTypes from '../constants/constants';
 import fetch from 'isomorphic-fetch';
 const baseURL = 'http://localhost:8000';
 
-export function receiveTestData(employees) {
+export function receiveEmployeeData(employees) {
   return {
-    type: ActionTypes.GET_TEST_DATA,
+    type: ActionTypes.GET_EMPLOYEE_DATA,
     employees,
   };
 }
 
-export function getTestData() {
+export function getEmployeeData() {
   return dispatch => {
-    return fetch(`${baseURL}/api/test`)
+    return fetch(`${baseURL}/api/employees`)
       .then(response => response.json())
-      .then(json => dispatch(receiveTestData(json.employees)));
+      .then(json => dispatch(receiveEmployeeData(json.employees)));
   };
 }

@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f74f058b8b5d3203d423"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "701fd53a46c99546dcaa"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -13339,9 +13339,9 @@
 
 	var _HomeContainer2 = _interopRequireDefault(_HomeContainer);
 
-	var _TestContainer = __webpack_require__(580);
+	var _TaylorContainer = __webpack_require__(580);
 
-	var _TestContainer2 = _interopRequireDefault(_TestContainer);
+	var _TaylorContainer2 = _interopRequireDefault(_TaylorContainer);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -13349,7 +13349,7 @@
 	  _reactRouter.Route,
 	  { path: '/', component: _App2.default },
 	  _react2.default.createElement(_reactRouter.IndexRoute, { component: _HomeContainer2.default }),
-	  _react2.default.createElement(_reactRouter.Route, { path: 'test', component: _TestContainer2.default })
+	  _react2.default.createElement(_reactRouter.Route, { path: 'taylor', component: _TaylorContainer2.default })
 	);
 
 	exports.default = routes;
@@ -25439,8 +25439,8 @@
 	        null,
 	        _react2.default.createElement(
 	          _reactRouter.Link,
-	          { to: '/test' },
-	          'Employees'
+	          { to: '/taylor' },
+	          'Taylor\'s Page'
 	        )
 	      )
 	    )
@@ -25458,8 +25458,8 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.receiveTestData = receiveTestData;
-	exports.getTestData = getTestData;
+	exports.receiveEmployeeData = receiveEmployeeData;
+	exports.getEmployeeData = getEmployeeData;
 
 	var _constants = __webpack_require__(554);
 
@@ -25473,21 +25473,21 @@
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-	var baseURL = 'http://localhost:7000';
+	var baseURL = 'http://localhost:8000';
 
-	function receiveTestData(employees) {
+	function receiveEmployeeData(employees) {
 	  return {
-	    type: ActionTypes.GET_TEST_DATA,
+	    type: ActionTypes.GET_EMPLOYEE_DATA,
 	    employees: employees
 	  };
 	}
 
-	function getTestData() {
+	function getEmployeeData() {
 	  return function (dispatch) {
-	    return (0, _isomorphicFetch2.default)(baseURL + '/api/test').then(function (response) {
+	    return (0, _isomorphicFetch2.default)(baseURL + '/api/employees').then(function (response) {
 	      return response.json();
 	    }).then(function (json) {
-	      return dispatch(receiveTestData(json.employees));
+	      return dispatch(receiveEmployeeData(json.employees));
 	    });
 	  };
 	}
@@ -25501,7 +25501,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var GET_TEST_DATA = exports.GET_TEST_DATA = 'GET_TEST_DATA';
+	var GET_EMPLOYEE_DATA = exports.GET_EMPLOYEE_DATA = 'GET_EMPLOYEE_DATA';
 
 /***/ },
 /* 555 */
@@ -27432,20 +27432,20 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var _components = {
-	  TestContainer: {
-	    displayName: 'TestContainer'
+	  TaylorContainer: {
+	    displayName: 'TaylorContainer'
 	  }
 	};
 
 	var _UsersTfuquaWebTechmeetupNode_modulesReactTransformHmrLibIndexJs2 = (0, _index6.default)({
-	  filename: '/Users/tfuqua/Web/techmeetup/app/js/containers/TestContainer.jsx',
+	  filename: '/Users/tfuqua/Web/techmeetup/app/js/containers/TaylorContainer.jsx',
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
 	});
 
 	var _UsersTfuquaWebTechmeetupNode_modulesReactTransformCatchErrorsLibIndexJs2 = (0, _index4.default)({
-	  filename: '/Users/tfuqua/Web/techmeetup/app/js/containers/TestContainer.jsx',
+	  filename: '/Users/tfuqua/Web/techmeetup/app/js/containers/TaylorContainer.jsx',
 	  components: _components,
 	  locals: [],
 	  imports: [_react3.default, _index2.default]
@@ -27457,16 +27457,16 @@
 	  };
 	}
 
-	var TestContainer = _wrapComponent('TestContainer')(function (_Component) {
-	  _inherits(TestContainer, _Component);
+	var TaylorContainer = _wrapComponent('TaylorContainer')(function (_Component) {
+	  _inherits(TaylorContainer, _Component);
 
-	  function TestContainer() {
-	    _classCallCheck(this, TestContainer);
+	  function TaylorContainer() {
+	    _classCallCheck(this, TaylorContainer);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(TestContainer).apply(this, arguments));
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(TaylorContainer).apply(this, arguments));
 	  }
 
-	  _createClass(TestContainer, [{
+	  _createClass(TaylorContainer, [{
 	    key: 'render',
 	    value: function render() {
 	      return _react3.default.createElement(
@@ -27482,14 +27482,14 @@
 	    }
 	  }]);
 
-	  return TestContainer;
+	  return TaylorContainer;
 	}(_react2.Component));
 
-	TestContainer.need = [function () {
-	  return Actions.getTestData.bind(null)();
+	TaylorContainer.need = [function () {
+	  return Actions.getEmployeeData.bind(null)();
 	}];
 
-	TestContainer.propTypes = {
+	TaylorContainer.propTypes = {
 	  employees: _react2.PropTypes.array.isRequired,
 	  dispatch: _react2.PropTypes.func.isRequired
 	};
@@ -27500,7 +27500,7 @@
 	  };
 	}
 
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(TestContainer);
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(TaylorContainer);
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
 
 /***/ },
@@ -27576,31 +27576,24 @@
 	var EmployeeTable = _wrapComponent('EmployeeTable')(function (_Component) {
 	  _inherits(EmployeeTable, _Component);
 
-	  function EmployeeTable() {
+	  function EmployeeTable(props, context) {
 	    _classCallCheck(this, EmployeeTable);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(EmployeeTable).apply(this, arguments));
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(EmployeeTable).call(this, props, context));
 	  }
 
 	  _createClass(EmployeeTable, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      var that = this;
-
 	      if (this.props.employees === undefined) {
-	        setTimeout(function () {
-	          that.props.dispatch(Actions.getTestData());
-	        }, 500);
+	        console.log(this.props.dispatch);
+	        that.props.dispatch(Actions.getEmployeeData());
 	      }
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-
-	      var imgStyle = {
-	        width: '100px'
-	      };
-
 	      return this.props.employees === undefined ? _react3.default.createElement(
 	        'p',
 	        null,
@@ -27654,7 +27647,7 @@
 	                _react3.default.createElement(
 	                  'td',
 	                  null,
-	                  _react3.default.createElement('img', { style: imgStyle, src: employee.img, alt: 'avatar' })
+	                  _react3.default.createElement('img', { src: employee.img, alt: 'avatar' })
 	                ),
 	                _react3.default.createElement(
 	                  'td',
@@ -44229,13 +44222,14 @@
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	var initialState = { employees: {} };
+
 	var rootReducer = function rootReducer() {
 	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
 	  var action = arguments[1];
 
 	  switch (action.type) {
 
-	    case ActionTypes.GET_TEST_DATA:
+	    case ActionTypes.GET_EMPLOYEE_DATA:
 	      return {
 	        employees: action
 	      };
