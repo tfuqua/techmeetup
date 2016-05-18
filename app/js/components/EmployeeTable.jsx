@@ -3,24 +3,18 @@ import { connect } from 'react-redux';
 import * as Actions from '../redux/actions/actions';
 
 class EmployeeTable extends Component {
-
+  constructor(props, context) {
+    super(props, context);
+  }
   componentDidMount() {
     const that = this;
-
     if (this.props.employees === undefined) {
-      setTimeout(function()
-      {
-        that.props.dispatch(Actions.getTestData());
-      }, 500);
+      console.log(this.props.dispatch);
+      that.props.dispatch(Actions.getEmployeeData());
     }
   }
 
   render() {
-
-    const imgStyle = {
-      width: '100px'
-    };
-
     return (
       this.props.employees === undefined
       ? <p>LOADING</p>
@@ -40,7 +34,7 @@ class EmployeeTable extends Component {
               {
                 this.props.employees.map((employee, index) => (
                   <tr key={index}>
-                    <td><img style={imgStyle} src={employee.img} alt="avatar" /></td>
+                    <td><img src={employee.img} alt="avatar" /></td>
                     <td>{employee.firstName}</td>
                     <td>{employee.lastName}</td>
                     <td>{employee.email}</td>

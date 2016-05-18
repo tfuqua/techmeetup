@@ -12,7 +12,7 @@ import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import api from './routes';
 
-const port = 7000;
+const port = 8000;
 const app = new Express();
 
 if (process.env.NODE_ENV !== 'production') {

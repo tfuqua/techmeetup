@@ -1,6 +1,9 @@
 @import "_bootstrap";
 @import "variables";
 
+body{
+  overflow-y: scroll;
+}
 .container-fluid{
   max-width:980px;
   margin: 0 auto;

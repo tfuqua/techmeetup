@@ -1,7 +1,7 @@
 import { Range, Map } from 'immutable';
 import faker from 'faker';
 
-export function getTestData(req, res) {
+export function getEmployeeData(req, res) {
   const employees = Range(0, 100)
     .map(id => Map({
       firstName: faker.name.firstName(),
