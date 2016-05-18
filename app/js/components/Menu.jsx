@@ -12,8 +12,8 @@ function Menu() {
           </Link>
         </li>
         <li>
-          <Link to="/test">
-            Employees
+          <Link to="/taylor">
+            Taylor's Page
           </Link>
         </li>
       </div>

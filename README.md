@@ -1,6 +1,14 @@
-# techmeetup
+# TechMeetup
 Group repo for Tech Meetup
 
+###To start application:
+```
+npm install
+npm start
+```
+App should be available at http://localhost:8000
+
+###Sample Tasks to get started 
 1. Create a react router route to your newly created page (/app/js/routes.js)
 2. Create a container component to map to your newly created route
 3. Create a component to nest inside of your container component

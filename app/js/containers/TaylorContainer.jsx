@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import EmployeeTable from '../components/EmployeeTable.jsx';
 import * as Actions from '../redux/actions/actions';
 
-class TestContainer extends Component {
+class TaylorContainer extends Component {
 
   render() {
     return (
@@ -16,11 +16,11 @@ class TestContainer extends Component {
   }
 }
 
-TestContainer.need = [() => {
-  return Actions.getTestData.bind(null)();
+TaylorContainer.need = [() => {
+  return Actions.getEmployeeData.bind(null)();
 }];
 
-TestContainer.propTypes = {
+TaylorContainer.propTypes = {
   employees: PropTypes.array.isRequired,
   dispatch: PropTypes.func.isRequired,
 };
@@ -31,4 +31,4 @@ function mapStateToProps(store) {
   };
 }
 
-export default connect(mapStateToProps)(TestContainer);
+export default connect(mapStateToProps)(TaylorContainer);
