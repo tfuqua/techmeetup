@@ -1,6 +1,9 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import * from './containers';
+import App from './containers/App.jsx';
+import HomeContainer from './containers/HomeContainer.jsx';
+import TaylorContainer from './containers/TaylorContainer.jsx';
+import VenkatContainer from './containers/VenkatContainer.jsx';
 
 const routes = (
   <Route path="/" component={App}>
