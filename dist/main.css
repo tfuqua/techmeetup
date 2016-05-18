@@ -5014,6 +5014,9 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+body {
+  overflow-y: scroll; }
+
 .container-fluid {
   max-width: 980px;
   margin: 0 auto; }
