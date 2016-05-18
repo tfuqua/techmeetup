@@ -1,4 +1,5 @@
 node_modules
 .DS_Store
-static
+dist/bundle.js
+dist/main.css
 npm-debug.log
