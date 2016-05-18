@@ -14,3 +14,13 @@ export function getEmployeeData(req, res) {
 
   res.json({ employees });
 }
+
+export function getCompanyData(req, res) {
+  const company = Range(0, 50)
+    .map(id => Map({
+      companyName: faker.company.companyName(),
+      catchPhrase: faker.company.catchPhrase(),
+      bs: faker.company.bs(),
+    }))
+    .take(10);
+}
