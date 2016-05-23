@@ -36,7 +36,7 @@ app.use((req, res) => {
     } else if (redirectLocation) {
       res.redirect(302, redirectLocation.pathname + redirectLocation.search);
     } else if (renderProps) {
-      const initialState = { employees: {} };
+      const initialState = { employees: {}, gif: {} };
       const store = configureStore(initialState);
 
       fetchComponentData(store.dispatch, renderProps.components, renderProps.params)

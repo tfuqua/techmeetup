@@ -1,11 +1,4 @@
 @import "_bootstrap";
 @import "variables";
+@import "src/layout";
 @import "src/footer";
-
-body{
-  overflow-y: scroll;
-}
-.container-fluid{
-  max-width:980px;
-  margin: 0 auto;
-}
