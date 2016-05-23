@@ -16,3 +16,18 @@ export function getEmployeeData() {
       .then(json => dispatch(receiveEmployeeData(json.employees)));
   };
 }
+
+export function receiveGif(gif) {
+  return {
+    type: ActionTypes.GET_GIF,
+    gif,
+  };
+}
+
+export function getGif(term) {
+  return dispatch => {
+    return fetch(`http://api.giphy.com/v1/gifs/random?tag=${term}&api_key=dc6zaTOxFJmzC`)
+      .then(response => response.json())
+      .then(json => dispatch(receiveGif(json.data.image_url)));
+  };
+}

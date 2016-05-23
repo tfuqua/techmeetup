@@ -3,14 +3,10 @@ import { connect } from 'react-redux';
 import * as Actions from '../redux/actions/actions';
 
 class EmployeeTable extends Component {
-  constructor(props, context) {
-    super(props, context);
-  }
+
   componentDidMount() {
-    const that = this;
     if (this.props.employees === undefined) {
-      console.log(this.props.dispatch);
-      that.props.dispatch(Actions.getEmployeeData());
+      this.props.dispatch(Actions.getEmployeeData());
     }
   }
 

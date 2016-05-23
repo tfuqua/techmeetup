@@ -1,6 +1,6 @@
 import * as ActionTypes from '../constants/constants';
 
-const initialState = { employees: {} };
+const initialState = { employees: {}, gif: {} };
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -8,6 +8,11 @@ const rootReducer = (state = initialState, action) => {
     case ActionTypes.GET_EMPLOYEE_DATA :
       return {
         employees: action,
+      };
+
+    case ActionTypes.GET_GIF :
+      return {
+        gif: action,
       };
 
     default:
