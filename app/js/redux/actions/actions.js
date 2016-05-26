@@ -17,9 +17,10 @@ export function getEmployeeData() {
   };
 }
 
-export function receiveGif(gif) {
+export function receiveGif(term, gif) {
   return {
     type: ActionTypes.GET_GIF,
+    term,
     gif,
   };
 }
@@ -28,6 +29,6 @@ export function getGif(term) {
   return dispatch => {
     return fetch(`http://api.giphy.com/v1/gifs/random?tag=${term}&api_key=dc6zaTOxFJmzC`)
       .then(response => response.json())
-      .then(json => dispatch(receiveGif(json.data.image_url)));
+      .then(json => dispatch(receiveGif(term, json.data.image_url)));
   };
 }

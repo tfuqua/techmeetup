@@ -6,7 +6,7 @@ class GiphyForm extends Component {
     return (
       <div className="row">
         <div className="jumbotron col-sm-6 col-sm-offset-3 text-center">
-          <form onSubmit={this.props.submitTerm}>
+          <form action="gif" onSubmit={this.props.submitTerm}>
             <div className="form-group">
               <input
                 className="form-control"
@@ -14,10 +14,11 @@ class GiphyForm extends Component {
                 value={this.props.searchTerm}
                 onChange={this.props.updateTerm}
                 type="text"
+                name="term"
               />
             </div>
             <div className="col-sm-4 text-center form-group col-sm-offset-4">
-              <button type="submit" className="btn btn-block btn-success">
+              <button type="submit" value="submit" className="btn btn-block btn-success">
                 Search
               </button>
             </div>

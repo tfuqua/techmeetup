@@ -38,8 +38,7 @@ app.use((req, res) => {
     } else if (renderProps) {
       const initialState = { employees: {}, gif: {} };
       const store = configureStore(initialState);
-
-      fetchComponentData(store.dispatch, renderProps.components, renderProps.params)
+      fetchComponentData(store.dispatch, renderProps.components, renderProps.location.query, renderProps.params)
         .then(() => {
           const html = renderToString(
             <Provider store={store}>

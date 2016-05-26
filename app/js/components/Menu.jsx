@@ -16,6 +16,11 @@ function Menu() {
               </Link>
             </li>
             <li>
+              <Link to="/gif">
+                Gifs
+              </Link>
+            </li>
+            <li>
               <Link to="/taylor">
                 Taylor's Page
               </Link>
