@@ -12,7 +12,10 @@ const rootReducer = (state = initialState, action) => {
 
     case ActionTypes.GET_GIF :
       return {
-        gif: action,
+        gif: {
+          gif: action.gif,
+          term: action.term,
+        },
       };
 
     default:

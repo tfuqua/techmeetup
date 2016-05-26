@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f04d6fa83a5ad3eec984"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "177f49e81a5de12be2b9"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -13343,16 +13343,17 @@
 
 	var _TaylorContainer2 = _interopRequireDefault(_TaylorContainer);
 
-	var _VenkatContainer = __webpack_require__(584);
+	var _HomeContainer = __webpack_require__(584);
 
-	var _VenkatContainer2 = _interopRequireDefault(_VenkatContainer);
+	var _HomeContainer2 = _interopRequireDefault(_HomeContainer);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var routes = _react2.default.createElement(
 	  _reactRouter.Route,
 	  { path: '/', component: _App2.default },
-	  _react2.default.createElement(_reactRouter.IndexRoute, { component: _GiphyContainer2.default }),
+	  _react2.default.createElement(_reactRouter.IndexRoute, { component: _HomeContainer2.default }),
+	  _react2.default.createElement(_reactRouter.Route, { path: '/gif', component: _GiphyContainer2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'taylor', component: _TaylorContainer2.default })
 	);
 
@@ -25443,6 +25444,15 @@
 	            null,
 	            _react2.default.createElement(
 	              _reactRouter.Link,
+	              { to: '/gif' },
+	              'Gifs'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              _reactRouter.Link,
 	              { to: '/taylor' },
 	              'Taylor\'s Page'
 	            )
@@ -26958,7 +26968,6 @@
 	  }, {
 	    key: 'updateTerm',
 	    value: function updateTerm(event) {
-	      console.log(this);
 	      this.setState({
 	        searchTerm: event.target.value
 	      });
@@ -26987,16 +26996,24 @@
 	  return GiphyContainer;
 	}(_react2.Component));
 
+	GiphyContainer.need = [function (params) {
+	  return Actions.getGif(params.term);
+	}];
+
+	GiphyContainer.contextTypes = {
+	  router: _react3.default.PropTypes.object
+	};
+
 	GiphyContainer.propTypes = {
 	  gif: _react2.PropTypes.object.isRequired,
 	  searchTerm: _react2.PropTypes.string.isRequired,
 	  dispatch: _react2.PropTypes.func.isRequired
 	};
 
-	function mapStateToProps(store) {
+	function mapStateToProps(store, props) {
 	  return {
 	    gif: store.gif,
-	    searchTerm: 'react'
+	    searchTerm: props.location.query.term
 	  };
 	}
 
@@ -27085,7 +27102,7 @@
 	          { className: "jumbotron col-sm-6 col-sm-offset-3 text-center" },
 	          _react3.default.createElement(
 	            "form",
-	            { onSubmit: this.props.submitTerm },
+	            { action: "gif", onSubmit: this.props.submitTerm },
 	            _react3.default.createElement(
 	              "div",
 	              { className: "form-group" },
@@ -27094,7 +27111,8 @@
 	                placeholder: "Search all the GIFs",
 	                value: this.props.searchTerm,
 	                onChange: this.props.updateTerm,
-	                type: "text"
+	                type: "text",
+	                name: "term"
 	              })
 	            ),
 	            _react3.default.createElement(
@@ -27102,7 +27120,7 @@
 	              { className: "col-sm-4 text-center form-group col-sm-offset-4" },
 	              _react3.default.createElement(
 	                "button",
-	                { type: "submit", className: "btn btn-block btn-success" },
+	                { type: "submit", value: "submit", className: "btn btn-block btn-success" },
 	                "Search"
 	              )
 	            )
@@ -27150,7 +27168,7 @@
 	  return _react2.default.createElement(
 	    'div',
 	    { className: 'text-center' },
-	    _react2.default.createElement('img', { src: test, alt: 'giphy' })
+	    _react2.default.createElement('img', { className: 'img-responsive', src: test, alt: 'giphy' })
 	  );
 	}
 
@@ -27205,9 +27223,10 @@
 	  };
 	}
 
-	function receiveGif(gif) {
+	function receiveGif(term, gif) {
 	  return {
 	    type: ActionTypes.GET_GIF,
+	    term: term,
 	    gif: gif
 	  };
 	}
@@ -27217,7 +27236,7 @@
 	    return (0, _isomorphicFetch2.default)('http://api.giphy.com/v1/gifs/random?tag=' + term + '&api_key=dc6zaTOxFJmzC').then(function (response) {
 	      return response.json();
 	    }).then(function (json) {
-	      return dispatch(receiveGif(json.data.image_url));
+	      return dispatch(receiveGif(term, json.data.image_url));
 	    });
 	  };
 	}
@@ -27992,7 +28011,7 @@
 /* 584 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(module) {'use strict';
+	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -28016,18 +28035,6 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _reactRedux = __webpack_require__(554);
-
-	var _EmployeeTable = __webpack_require__(583);
-
-	var _EmployeeTable2 = _interopRequireDefault(_EmployeeTable);
-
-	var _actions = __webpack_require__(578);
-
-	var Actions = _interopRequireWildcard(_actions);
-
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -28037,20 +28044,20 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var _components = {
-	  VenkatContainer: {
-	    displayName: 'VenkatContainer'
+	  HomeContainer: {
+	    displayName: "HomeContainer"
 	  }
 	};
 
 	var _UsersTfuquaWebTechmeetupNode_modulesReactTransformHmrLibIndexJs2 = (0, _index6.default)({
-	  filename: '/Users/tfuqua/Web/techmeetup/app/js/containers/VenkatContainer.jsx',
+	  filename: "/Users/tfuqua/Web/techmeetup/app/js/containers/HomeContainer.jsx",
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
 	});
 
 	var _UsersTfuquaWebTechmeetupNode_modulesReactTransformCatchErrorsLibIndexJs2 = (0, _index4.default)({
-	  filename: '/Users/tfuqua/Web/techmeetup/app/js/containers/VenkatContainer.jsx',
+	  filename: "/Users/tfuqua/Web/techmeetup/app/js/containers/HomeContainer.jsx",
 	  components: _components,
 	  locals: [],
 	  imports: [_react3.default, _index2.default]
@@ -28062,50 +28069,34 @@
 	  };
 	}
 
-	var VenkatContainer = _wrapComponent('VenkatContainer')(function (_Component) {
-	  _inherits(VenkatContainer, _Component);
+	var HomeContainer = _wrapComponent("HomeContainer")(function (_Component) {
+	  _inherits(HomeContainer, _Component);
 
-	  function VenkatContainer() {
-	    _classCallCheck(this, VenkatContainer);
+	  function HomeContainer() {
+	    _classCallCheck(this, HomeContainer);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(VenkatContainer).apply(this, arguments));
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(HomeContainer).apply(this, arguments));
 	  }
 
-	  _createClass(VenkatContainer, [{
-	    key: 'render',
+	  _createClass(HomeContainer, [{
+	    key: "render",
 	    value: function render() {
 	      return _react3.default.createElement(
-	        'div',
-	        { className: 'container-fluid' },
+	        "div",
+	        { className: "container-fluid" },
 	        _react3.default.createElement(
-	          'h3',
+	          "h2",
 	          null,
-	          'Employees'
-	        ),
-	        _react3.default.createElement(_EmployeeTable2.default, { employees: this.props.employees })
+	          "Hello World"
+	        )
 	      );
 	    }
 	  }]);
 
-	  return VenkatContainer;
+	  return HomeContainer;
 	}(_react2.Component));
 
-	VenkatContainer.need = [function () {
-	  return Actions.getEmployeeData.bind(null)();
-	}];
-
-	VenkatContainer.propTypes = {
-	  employees: _react2.PropTypes.array.isRequired,
-	  dispatch: _react2.PropTypes.func.isRequired
-	};
-
-	function mapStateToProps(store) {
-	  return {
-	    employees: store.employees.employees
-	  };
-	}
-
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(VenkatContainer);
+	exports.default = HomeContainer;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
 
 /***/ },
@@ -44656,7 +44647,10 @@
 
 	    case ActionTypes.GET_GIF:
 	      return {
-	        gif: action
+	        gif: {
+	          gif: action.gif,
+	          term: action.term
+	        }
 	      };
 
 	    default:

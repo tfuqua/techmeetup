@@ -9,7 +9,7 @@ function GiphyResult(props) {
 
   return (
     <div className="text-center">
-      <img src={test} alt="giphy" />
+      <img className="img-responsive" src={test} alt="giphy" />
     </div>
   );
 }
