@@ -16,6 +16,7 @@ const rootReducer = (state = initialState, action) => {
           gif: action.gif,
           term: action.term,
         },
+        employees: {},
       };
 
     default:

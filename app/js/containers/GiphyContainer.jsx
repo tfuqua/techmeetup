@@ -19,6 +19,10 @@ class GiphyContainer extends Component {
     e.preventDefault();
     const searchTerm = this.state.searchTerm;
     this.props.dispatch(Actions.getGif(searchTerm));
+
+    this.context.router.push({
+      pathname: `/gif?term=${searchTerm}`,
+    });
   }
 
   updateTerm(event) {

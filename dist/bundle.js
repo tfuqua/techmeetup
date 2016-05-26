@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "177f49e81a5de12be2b9"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "53e72b891cc5c4a2d96d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -26964,6 +26964,10 @@
 	      e.preventDefault();
 	      var searchTerm = this.state.searchTerm;
 	      this.props.dispatch(Actions.getGif(searchTerm));
+
+	      this.context.router.push({
+	        pathname: '/gif?term=' + searchTerm
+	      });
 	    }
 	  }, {
 	    key: 'updateTerm',
@@ -44650,7 +44654,8 @@
 	        gif: {
 	          gif: action.gif,
 	          term: action.term
-	        }
+	        },
+	        employees: {}
 	      };
 
 	    default:
